@@ -1,11 +1,15 @@
 package com.example.demoapp.employees;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class EmployeeController {
+	
+	@Autowired
+	EmployeeService employeeService;
 
 	@GetMapping("/employees")
 	public EmployeeResponse[] listEmployee()
@@ -24,9 +28,7 @@ public class EmployeeController {
 	@GetMapping("/employees/{id}")
 	public EmployeeResponse getEmployee(@PathVariable String id)
 	{
-		EmployeeResponse employee01=new EmployeeResponse();
-		employee01.setId(Integer.valueOf(id));
-		employee01.setName("apiwat");
-		return employee01;
+		EmployeeResponse response=employeeService.getById(Integer.valueOf(id));
+		return response;
 	}
 }
