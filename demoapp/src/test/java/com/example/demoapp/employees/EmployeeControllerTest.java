@@ -23,4 +23,16 @@ public class EmployeeControllerTest {
 		assertEquals(1,result[0].getId());
 		assertEquals("apiwat",result[0].getName());
 	}
+	
+	@Test
+	public void getEmployeeById()
+	{
+		// Arrange
+		int id=11;
+		// Act
+		EmployeeResponse result1=restTemplate.getForObject("/employees/" + id, EmployeeResponse.class);
+		// Assert
+		assertEquals(id,result1.getId());
+		assertEquals("apiwat",result1.getName());
+	}
 }
