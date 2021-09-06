@@ -22,13 +22,15 @@ class EmployeeControllerWebMvcTest {
 	
 	@Test
 	public void getEmployeeById() throws Exception {
-		MvcResult result=mvc.perform(get("/employees/1")).andExpect(status().isOk())
+		int id=11;
+		MvcResult result=mvc.perform(get("/employees/" + id)).andExpect(status().isOk())
 					.andReturn();
+		// Response Body
 		byte[] json=result.getResponse().getContentAsByteArray();
 		ObjectMapper mapper=new ObjectMapper();
 		EmployeeResponse response=mapper.readValue(json, EmployeeResponse.class);
 		// Assert
-		assertEquals(1,response.getId());
+		assertEquals(id,response.getId());
 		assertEquals("apiwat",response.getName());
 	}
 
