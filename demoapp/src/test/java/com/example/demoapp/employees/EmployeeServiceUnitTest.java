@@ -63,10 +63,7 @@ public class EmployeeServiceUnitTest {
 		when(employeeRepository.findById(1)).thenReturn(Optional.empty());
 		// Act
 		EmployeeService employeeService=new EmployeeService(employeeRepository);
-
-		EmployeeNotFoundException result= assertThrows(EmployeeNotFoundException.class , () ->  { 
-			employeeService.getById(id);
-		});
+		EmployeeNotFoundException result= assertThrows(EmployeeNotFoundException.class , () -> employeeService.getById(id) );
 		// Assert
 		assertEquals("Employee not found id=" + id,result.getMessage());
 		
