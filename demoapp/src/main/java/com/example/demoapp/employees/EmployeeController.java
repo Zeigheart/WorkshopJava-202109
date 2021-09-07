@@ -13,9 +13,6 @@ public class EmployeeController {
 	@Autowired
 	EmployeeService employeeService;
 	
-	@Autowired
-	EmployeeRepository employeeRepository;
-
 	@GetMapping("/employees")
 	public EmployeeResponse[] listEmployee()
 	{
@@ -31,22 +28,10 @@ public class EmployeeController {
 	}
 	
 	@GetMapping("/employees/{id}")
-	public EmployeeResponse getEmployee(@PathVariable String id)
+	public EmployeeResponse getEmployee(@PathVariable String id) throws NumberFormatException, EmployeeNotFoundException
 	{
 		EmployeeResponse response=employeeService.getById(Integer.valueOf(id));
 		return response;
 	}
 	
-	public EmployeeResponse getById(int id) throws EmployeeNotFoundException
-	{
-		Optional<Employee> result=employeeRepository.findById(id);
-		if(result.isPresent())
-		{
-			EmployeeResponse response=new EmployeeResponse();
-			response.setId(result.get().getId());
-			response.setName(result.get().getName());
-			return response;
-		}
-		throw new EmployeeNotFoundException("Employee not found id=" + id);
-	}
 }
