@@ -14,6 +14,9 @@ public class EmployeeControllerTest {
 	@Autowired
 	TestRestTemplate restTemplate;
 	
+	//@Autowired
+	//EmployeeRepository employeeRepository;
+	
 	@Test
 	public void listEmployee()
 	{
