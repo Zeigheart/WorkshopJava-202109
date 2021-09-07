@@ -31,8 +31,11 @@ public class EmployeeControllerTest {
 	public void getEmployeeById()
 	{
 		// Arrange
-		int id=11;
-		// Act
+        int id = 1;
+        Employee employee1 = new Employee();
+        employee1.setName("apiwat");
+        employeeRepository.save(employee1);
+        // Act
 		EmployeeResponse result1=restTemplate.getForObject("/employees/" + id, EmployeeResponse.class);
 		// Assert
 		assertEquals(id,result1.getId());
