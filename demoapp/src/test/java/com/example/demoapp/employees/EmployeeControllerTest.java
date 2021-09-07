@@ -2,6 +2,8 @@ package com.example.demoapp.employees;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +18,20 @@ public class EmployeeControllerTest {
 	
 	@Autowired
 	EmployeeRepository employeeRepository;
+	
+//	@BeforeEach
+//	public void initialDataForTest()
+//	{
+//		Employee employee1 = new Employee();
+//        employee1.setName("apiwat");
+//        employeeRepository.save(employee1);
+//	}
+	
+	@AfterEach
+	public void deleteTestData()
+	{
+		employeeRepository.deleteAll();
+	}
 	
 	@Test
 	public void listEmployee()
