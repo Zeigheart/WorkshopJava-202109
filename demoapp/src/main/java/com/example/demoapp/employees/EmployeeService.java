@@ -10,7 +10,12 @@ public class EmployeeService {
 
 	@Autowired
 	EmployeeRepository employeeRepository;
-	
+
+	public EmployeeService(EmployeeRepository employeeRepository2) {
+		// TODO Auto-generated constructor stub
+		employeeRepository=employeeRepository2;
+	}
+
 	public EmployeeResponse getById(int id) throws EmployeeNotFoundException
 	{
 		Optional<Employee> result=employeeRepository.findById(id);
