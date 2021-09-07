@@ -1,1 +1,1 @@
-insert into employee(id,name) values (1000,"apiwat");
+insert into employee values ('apiwat');
