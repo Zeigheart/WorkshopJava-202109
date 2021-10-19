@@ -4,7 +4,7 @@ RUN git clone https://github.com/Zeigheart/WorkshopJava-202109.git
 
 FROM maven:3.5-jdk-8-alpine
 WORKDIR /app
-COPY --from=0 /WorkshopJava-202109/demoapp /app
+COPY --from=0 /demoapp /app
 RUN mvn install
 
 FROM openjdk:8-jre-alpine
